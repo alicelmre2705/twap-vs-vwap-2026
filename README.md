@@ -1,4 +1,3 @@
-![CI](https://github.com/alicelmre2705/execution-cost-lab/actions/workflows/ci.yml/badge.svg)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 
 # Execution Cost Lab — TWAP vs VWAP on 5-Minute Bars
@@ -17,13 +16,15 @@ The experiment is deliberately constrained — bar-level execution at close pric
 
 ## Key Results (1 000 windows, 5 tickers)
 
-| Metric | TWAP | Forecast VWAP | Oracle VWAP |
-|:---|---:|---:|---:|
-| Mean IS (USD/share) | 0.0200 | 0.0161 | 0.0121 |
-| Mean fill ratio | 95.7 % | 95.4 % | 100.0 % |
-| Win rate vs TWAP | — | 51.3 % | 54.4 % |
+| Metric | TWAP | Forecast VWAP |
+|:---|---:|---:|
+| Mean IS (USD/share) | −0.0230 | −0.0274 |
+| Mean fill ratio | 94.5 % | 93.7 % |
+| Win rate vs TWAP | — | 52.5 % |
 
-**Forecast VWAP reduces mean implementation shortfall by ~0.004 USD/share relative to TWAP.** The oracle schedule provides a lower-bound reference that a real-time strategy cannot reach.
+**Forecast VWAP reduces mean implementation shortfall by ≈ 0.0044 USD/share relative to TWAP.** The oracle (realized-volume) VWAP is reported in figures as an upper-bound reference that a real-time strategy cannot reach.
+
+The advantage is concentrated in **high-volume regimes** (56.6 % win rate when both volume and volatility are high, 54.6 % in high volume / low volatility). It shrinks to 50.6 % in low-volume / high-volatility conditions and reverses marginally (48.2 %) in low-volume / low-volatility conditions, where the intraday profile contains little exploitable structure.
 
 > Numbers above are from a full pipeline run (`bash run_all.sh`). A small sample CSV is bundled for plotting without internet access; run the pipeline to reproduce these exact figures.
 
