@@ -1,3 +1,4 @@
+![CI](https://github.com/alicelmre2705/twap-vs-vwap-2026/actions/workflows/ci.yml/badge.svg)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 
 # Execution Cost Lab — TWAP vs VWAP on 5-Minute Bars
